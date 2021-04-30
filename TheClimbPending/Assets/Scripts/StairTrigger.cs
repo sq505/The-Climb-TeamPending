@@ -1,18 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StairTrigger : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject Stair;
+    public GameObject Trigger;
+
     void Start()
     {
-        
+        Stair.GetComponent<PolygonCollider2D>().enabled = false;
     }
+    void OnTriggerEnter2D(Collider2D other)
+    {
 
-    // Update is called once per frame
+        if (other.tag == "Player")
+        {
+            Stair.GetComponent<PolygonCollider2D>().enabled = true;
+            
+        }
+    }
     void Update()
     {
-        
+
     }
 }
